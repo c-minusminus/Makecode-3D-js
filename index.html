@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raycaster Simulator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #181818;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            border: 1px solid #2a2a2a;
+        }
+
+        /* Compact HUD Timer right above simulator */
+        #timer-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 640px;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background: #222222;
+            border-radius: 6px;
+            border: 1px solid #333333;
+        }
+
+        .hud-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hud-label {
+            color: #888888;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        #timer-display {
+            color: #09f6ff;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #best-display {
+            color: #78dc52;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Canvas scaling to blow up low-res buffer without blur */
+        #screen {
+            width: 640px;
+            height: 480px;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            background-color: #000000;
+            border: 2px solid #333333;
+            border-radius: 4px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <!-- HUD Header Bar -->
+        <div id="timer-bar">
+            <div class="hud-group">
+                <span class="hud-label">TIME</span>
+                <span id="timer-display">0.00</span>
+            </div>
+            <div class="hud-group">
+                <span class="hud-label">BEST</span>
+                <span id="best-display">0.00</span>
+            </div>
+        </div>
+		
+		<div id="fps-display">0</div>
+
+        <!-- Render Target Canvas -->
+        <canvas id="screen" width="900" height="900" ></canvas>
+    </div>
+
+    <!-- Load Game Engine -->
+    <script src="game.js"></script>
+</body>
+</html>
